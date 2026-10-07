@@ -1,0 +1,53 @@
+body{ 
+    font-family: Arial, sans-serif;
+    background-color: white;
+    max-width: 1200px;    
+    margin: 20px auto;       
+    padding: 20px 10px;
+    margin-left: 50px;
+    margin-top: 60px;
+    }
+.paginaSobreNos {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    align-items: left;
+}
+.colunaEsquerda {
+    flex: 1;
+    margin-right: 100px;
+}
+
+.sobrenosStyle {
+    font-family: Inter, sans-serif;
+    color:#00b4d8;
+    font-size: 26px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+    }
+
+.uneCaixas {
+    display: flex;
+    gap: 20px;
+
+}
+.caixa {
+    flex: 2;
+    background-color: #f0f4ff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+}
+.caixa h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+.caixa p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
