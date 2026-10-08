@@ -1,0 +1,90 @@
+.body{
+    font-family: Outfit, sans-serif;
+}
+
+
+.titulo {
+    font-family: Outfit, sans-serif;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 200px;
+    color: #34b3e0
+}
+
+.texto {
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgb(0, 0, 0);
+    margin-bottom: 90px;
+}
+
+.localização {
+    justify-content: center;
+    text-align: left;
+    background-color: #d9e2f0c9;
+    display: flex;
+    max-width: 900px;
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #64748b;
+}
+
+.mapa {
+    justify-content: center;
+    text-align: left;
+    background-color: #d9e2f0c9;
+    display: flex;
+    max-width: 900px;
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #64748b;
+}
+
+.percursos {
+    justify-content: center;
+    text-align: left;
+    background-color: #d9e2f0c9;
+    display: flex;
+    max-width: 900px;
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #64748b;
+}
+
+.tempo {
+    justify-content: center;
+    text-align: left;
+    background-color: #d9e2f0c9;
+    display: flex;
+    max-width: 900px;
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #64748b;
+}
+
+.notificações {
+    justify-content: center;
+    text-align: left;
+    background-color: #d9e2f0c9;
+    display: flex;
+    max-width: 900px;
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #64748b;
+}
+
+.histórico {
+    justify-content: center;
+    text-align: left;
+    background-color: #d9e2f0c9;
+    display: flex;
+    max-width: 900px;
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #64748b;
+}
