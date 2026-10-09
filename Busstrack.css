@@ -65,12 +65,56 @@ max-width: 630px;
 
 .tamanho-texto2 {
     margin-left: 20px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     max-width: 600px;
     width: 90%;
 
 }
+
+.lado-lado{
+    display: flex;
+    margin-left: 37px;
+    margin-top: -39px;
+    font-size:18px;
+}
+
+
+.fundo-simb {
+    background-color: rgba(255, 0, 0, 0.3);
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.fundo-verde {
+    background-color: rgba(0, 180, 216, 0.3);
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.lado-lado2{
+    display: flex;
+    margin-left: 40px;
+    margin-top: -50px;
+    font-size:16px;
+}
+
 
 body{
     margin-top : 200px;
