@@ -395,7 +395,7 @@ nav a {
     padding: 10px;
 }
 #como-funciona .uneCaixas{
-    display: flex;
+    display: flex; 
     gap: 30px;
     margin-top: 75px;
     align-items: stretch;
@@ -438,11 +438,12 @@ nav a {
     color: #34b3e0;
 }
 #funcionalidades .texto {
+    font-family: 'arial', sans-serif;
     max-width: 600px;
     width: 90%;
     margin: 0 auto;
     text-align: center;
-    font-size: 18px;
+    font-size: 37px;
     line-height: 1.6;
     color: rgb(0, 0, 0);
     margin-bottom: 90px;
@@ -493,27 +494,27 @@ nav a {
     padding: 110px;
     padding-top: 10px;
     margin-left: 0;
-    text-align: center;
+    text-align: left;
     border-radius: 16px;
     box-shadow: #0a131e;
-    padding-bottom: 10px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
+    position: relative;
 }
 #planos .caixaDrta{
     background-color: #00b8d9;
     padding: 110px;
     padding-top: 10px;
     margin-left: 0;
-    text-align: center;
+    text-align: left;
     border-radius: 16px;
     box-shadow: white;
-    padding-bottom: 200px;
-    margin-bottom: 100px;
+    position: relative;
 }
 #planos .uneCaixas{
     display: flex;
     align-items: stretch;
-    gap: 40px;
+    gap: 50px;
+    margin-top: 50px;
 }
 #planos .precoContainer{
     display: flex;
@@ -532,6 +533,9 @@ nav a {
     margin-left: -60px;
     padding-bottom: 20px;
 }
+.listaPlanos p{
+    height: 50px;
+}
 #planos .listaPlanosDrta{
     text-align: left;
     color: white;
@@ -540,7 +544,7 @@ nav a {
 }
 #planos .listaPlanosDrta p {
     color: white;
-    padding-bottom: 20px;
+    height: 50px;
 }
 #planos .botaoCaixa{
     background-color: #1d2c53;
@@ -551,7 +555,15 @@ nav a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 16px;
+    margin-bottom: auto;
+
+    position: absolute;
+    bottom: 20px; /* <-- MUDA AQUI! 20px é o espaço até ao fundo. Se quiseres menos espaço, põe 10px. Se quiseres mais, põe 40px */
+    left: 50%;
+    transform: translateX(-50%); /* Isto mantém o botão sempre perfeitamente centrado */
+    width: 80%; /* Garante que o botão não fica muito esmagado */
 }
+
 #planos .botaoCaixa:hover{
     background-color: #0092b3; 
 }
@@ -564,7 +576,15 @@ nav a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 16px;
+    margin-bottom: auto;
+
+    position: absolute;
+    bottom: 20px; /* <-- MUDA AQUI! 20px é o espaço até ao fundo. Se quiseres menos espaço, põe 10px. Se quiseres mais, põe 40px */
+    left: 50%;
+    transform: translateX(-50%); /* Isto mantém o botão sempre perfeitamente centrado */
+    width: 80%; /* Garante que o botão não fica muito esmagado */
 }
+
 #planos .botaoCaixaDrta:hover{
     background-color: #1d2c53;
 }
