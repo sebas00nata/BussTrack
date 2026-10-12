@@ -242,9 +242,9 @@ nav a {
     color: white;
 }
 
-/* =========================================
+/* 
    2. SOBRE NÓS (O teu sobreNos.css original)
-   ========================================= */
+ */
 #sobre-nos {
     font-family: Arial, sans-serif;
     background-color: white;
@@ -420,56 +420,84 @@ nav a {
     margin-bottom: 22px;
 }
 
-/* =========================================
-   4. COMO FUNCIONA (O teu comoFunciona.css original)
-   ========================================= */
+/* 
+   4. COMO FUNCIONA
+    */
 #como-funciona {
     font-family: Arial, sans-serif;
     background-color: white;
     display: flex;
     flex-direction: column;
-    align-items:center; 
+    align-items: center; 
     justify-content: center;
-    margin-top: 65px;
+    padding: 60px 20px;
     text-align: center;
-    padding-bottom: 50px;
-}
-#como-funciona .comoFuncionaTitulo{
-    font-family: Inter, sans-serif;
-    color:#00b4d8;
-    font-size: 16px; 
-    padding: 10px;
-}
-#como-funciona .uneCaixas{
-    display: flex; 
-    gap: 30px;
-    margin-top: 75px;
-    align-items: stretch;
-    margin-left: 200px;
-    margin-right: 200px;
-}
-#como-funciona .caixa{
-    flex: 2;
-    background-color: #f0f4ff;
-    padding: 20px;
-    padding-top: 10px;
-    border-radius: 16px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
-    width: 240px;
-}
-#como-funciona p{
-    font-size: 16px;
-}
-#como-funciona h3{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-#como-funciona h2{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/* =========================================
+#como-funciona .comoFuncionaTitulo {
+    font-family: Inter, sans-serif;
+    color: #00b4d8;
+    font-size: 16px; 
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* O texto que fica por baixo do título principal */
+#como-funciona > p {
+    font-size: 16px;
+    color: #111827;
+    line-height: 1.5;
+    margin-bottom: 50px;
+    max-width: 600px;
+}
+
+/* O contentor que segura as 3 caixas */
+#como-funciona .uneCaixas {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px; /* Garante que não ficam demasiado esticadas no PC */
+    margin: 0 auto;
+}
+
+/* As caixas individuais */
+#como-funciona .caixa {
+    flex: 1;
+    background-color: #f0f4ff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+    display: block; 
+    min-width: 250px;
+}
+
+#como-funciona .caixa h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#como-funciona .caixa h3 {
+    color: #0b1b2a;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* A solução final para o texto não ficar esmagado */
+#como-funciona .caixa p {
+    color: #111827;
+    font-size: 16px;
+    line-height: 1.8;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 0;
+}
+
+/* 
    5. FUNCIONALIDADES (O teu funcionalidade.css original)
-   ========================================= */
+    */
 
 #funcionalidades {
     font-family: Outfit, sans-serif;
@@ -513,9 +541,9 @@ nav a {
 
 
 
-/* =========================================
+/* 
    6. PLANOS (O teu planos.css original)
-   ========================================= */
+    */
 #planos {
     background-color: #0b1b2a;
     margin-top: 50px;
