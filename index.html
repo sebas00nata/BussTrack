@@ -3,123 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>BusTrack - PrimeTrack</title>
-
+    
+    <!-- LIGAÇÃO A TODOS OS TEUS FICHEIROS CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <header class="navbar">
-
         <div class="logo">
-            <div class="logo-icon">🚌</div>
+            <div class="logo-icon">🚍</div> <!-- Podes meter o teu ícone aqui -->
             <span>BusTrack</span>
             <small>by PrimeTrack</small>
         </div>
-
         <nav>
-            <a href="#" class="active">Início</a>
-            <a href="#">Sobre nós</a>
-            <a href="#">BusTrack</a>
-            <a href="#">Como funciona</a>
-            <a href="#">Funcionalidades</a>
-            <a href="#">Planos</a>
-            <a href="#">Tecnologia</a>
-            <a href="#">Contactos</a>
+            <!-- Os links agora apontam para os ID's de cada secção -->
+            <a href="#inicio" class="active">Início</a>
+            <a href="#sobre-nos">Sobre nós</a>
+            <a href="#bustrack">BusTrack</a>
+            <a href="#como-funciona">Como funciona</a>
+            <a href="#funcionalidades">Funcionalidades</a>
+            <a href="#planos">Planos</a>
+            <a href="#tecnologia">Tecnologia</a>
+            <a href="#contactos">Contactos</a>
         </nav>
-
     </header>
 
     <main>
-
-        <section class="hero">
-
+        <!-- 1. INÍCIO (O teu hero original) -->
+        <section id="inicio" class="hero">
             <div class="hero-content">
-
-                <span class="badge">
-                    ● TEMPO REAL
-                </span>
-
-                <h1>
-                    Nunca mais esperes pelo autocarro
-                    <span>sem saber</span> quando ele chegar
-                </h1>
-
-                <p>
-                    Com o BusTrack, podes acompanhar a localização dos
-                    autocarros em tempo real e planear melhor as tuas
-                    deslocações.
-                </p>
-
+                <span class="badge">TEMPO REAL</span>
+                <h1>Nunca mais esperes pelo autocarro <span>sem saber</span> quando ele chegar</h1>
+                <p>Com o BusTrack, podes acompanhar a localização dos autocarros em tempo real e planear melhor as tuas deslocações.</p>
                 <div class="buttons">
-
-                    <a href="#" class="btn-primary">
-                        Conhecer o BusTrack
-                    </a>
-
-                    <a href="#" class="btn-secondary">
-                        Saber mais sobre a PrimeTrack
-                    </a>
-
+                    <a href="#bustrack" class="btn-primary">Conhecer o BusTrack</a>
+                    <a href="#sobre-nos" class="btn-secondary">Saber mais sobre a PrimeTrack</a>
                 </div>
-
                 <div class="features">
-
-                    <div>
-                        📍
-                        <span>Localização em tempo real</span>
-                    </div>
-
-                    <div>
-                        🚌
-                        <span>Acompanhe os autocarros</span>
-                    </div>
-
-                    <div>
-                        ⏱️
-                        <span>Poupe tempo nas deslocações</span>
-                    </div>
-
+                    <div><span>Localização em tempo real</span></div>
+                    <div><span>Acompanhe os autocarros</span></div>
+                    <div><span>Poupe tempo nas deslocações</span></div>
                 </div>
-
             </div>
-
             <div class="phone">
-
                 <div class="phone-top"></div>
-
                 <div class="map">
                     <div class="route"></div>
-
-                    <div class="bus">
-                        🚌
-                    </div>
+                    <div class="bus"></div>
                 </div>
-
                 <div class="bus-info">
                     <div class="buss-info-top">
-                        <strong> Linha 15 - Centro</strong>
+                        <strong>Linha 15 - Centro</strong>
                         <span class="badge-live">AO VIVO</span>
-
                     </div>
-                    <p>
-                        Proxima paragem em <b>2 min</b>
-                    </p>
+                    <p>Próxima paragem em <b>2 min</b></p>
                 </div>
-
             </div>
-
         </section>
 
+        <!-- 2. SOBRE NÓS -->
+        <section id="sobre-nos" style="padding: 60px 0;">
+            <div class="paginaSobreNos">
+                <div class="colunaEsquerda">
+                    <h1 class="sobrenosStyle">Sobre nós</h1>
+                    <h1>PrimeTrack Technologies</h1>
+                    <p class="pstyleSobreNos">A PrimeTrack Technologies é uma empresa tecnológica focada no desenvolvimento de soluções digitais inovadoras para melhorar o dia a dia das pessoas.</p>
+                    <p class="pstyleSobreNos">Através da tecnologia, procuramos desenvolver soluções simples, modernas e acessíveis para resolver problemas reais da sociedade.</p>
+                    <div class="uneCaixas">
+                        <div class="caixa">
+                            <h2>🎯</h2>
+                            <h3>A nossa missão</h3>
+                            <p>Criar soluções tecnológicas que tornem a vida das pessoas mais simples, eficiente e conectada.</p>
+                        </div>
+                        <div class="caixa">
+                            <h2>👁️</h2>
+                            <h3>A nossa visão</h3>
+                            <p>Construir um futuro onde a tecnologia ajuda as pessoas a tomar melhores decisões no seu dia a dia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. BUSTRACK (O Produto) -->
+        <section id="bustrack" style="padding: 60px 0;">
+            <section class="produto">
+                <div><h4>O NOSSO PRODUTO</h4></div>
+            </section>
+            <section class="titulo">
+                <div><h1>O que é o BusTrack?</h1></div>
+            </section>
+            <section class="descricao">
+                <div><p>O BussTrack é uma aplicação móvel que permite aos utilizadores acompanhar a localização dos autocarros em tempo real através de um mapa interativo.</p></div>
+            </section>
+            <section class="problema">
+                <div>
+                    <section class="fundo-simb">
+                        <div><h3>⚠️</h3></div>
+                    </section>
+                    <h3><div class="lado-lado">O problema</div></h3>
+                    <p>
+                        <div class="tamanho-texto">
+                        Atualmente, muitas pessoas são obrigadas a esperar longos períodos nas paragens sem saber exatamente quando o autocarro irá chegar. Um problema diário que afeta milhares de utilizadores.
+                        </div>
+                    </p>
+                </div>
+            </section>
+            <section class="solucao">
+                <div>
+                    <div class="tamanho-texto2">
+                        <section class="fundo-verde">
+                            <div><h3>✅</h3></div>
+                        </section>
+                        <div class="lado-lado2">
+                            <h3>A Nossa solução</h3>
+                        </div>
+                        <p>✔️ Ver a localização dos autocarros no mapa</p>
+                        <p>✔️ Acompanhar o percurso em tempo real</p>
+                        <p>✔️ Consultar as paragens disponíveis</p>
+                        <p>✔️ Saber quando o autocarro se aproxima</p>
+                        <p>✔️ Gerir melhor o seu tempo</p>
+                        <p>✔️ Evitar esperas desnecessárias</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- 4. COMO FUNCIONA -->
+        <section id="como-funciona" style="padding: 60px 0; text-align: center; background-color: #f0f6ff;">
+            <h3 class="comoFuncionaTitulo">COMO FUNCIONA</h3>
+            <h2>Três Passos Simples</h2>
+            <p>Começar a usar o BusTrack é fácil e intuitivo. <br> Em poucos segundos tens toda a informação que precisas.</p>
+            <div class="uneCaixas">
+                <div class="caixa">
+                    <h2>📱</h2>
+                    <h3>Abrir a aplicação</h3>
+                    <p>O utilizador abre o BusTrack no seu dispositivo móvel. Interface simples e intuitiva, disponível em qualquer smartphone.</p>
+                </div>
+                <div class="caixa">
+                    <h2>🗺️</h2>
+                    <h3>Consultar o Mapa</h3>
+                    <p>O utilizador vê os autocarros e as suas localizações atualizadas em tempo real no mapa interativo.</p>
+                </div>
+                <div class="caixa">
+                    <h2>⏰</h2>
+                    <h3>Planear a Deslocação</h3>
+                    <p>Com essa informação, o utilizador decide quando deve sair de casa e dirigir-se à paragem. Sem esperas desnecessárias.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FUNCIONALIDADES -->
+        <section id="funcionalidades" style="padding: 60px 0;">
+            <section class="titulo">
+                <div><h4 style="color: #34b3e0;">FUNCIONALIDADES</h4></div>
+            </section>
+            <section class="texto">
+                <div><h1>Tudo o que precisas numa só app</h1></div>
+            </section>
+            <section class="caixa1" style="display: flex; justify-content: center; flex-wrap: wrap;">
+                <div class="localiza">
+                    <h1>📍</h1>
+                    <h3>Localização em tempo real</h3>
+                    <p>Acompanhe a localização dos autocarros através do mapa com atualizações ao segundo.</p>
+                </div>
+                <div class="mapa">
+                    <h1>🗺️</h1>
+                    <h3>Mapa interativo</h3>
+                    <p>Consulte os autocarros e as paragens disponíveis de forma visual e intuitiva.</p>
+                </div>
+                <div class="percursos">
+                    <h1>🚌</h1>
+                    <h3>Informação sobre percursos</h3>
+                    <p>Veja os percursos completos realizados pelos autocarros e planeie melhor.</p>
+                </div>
+            </section>
+            <section class="caixa2" style="display: flex; justify-content: center; flex-wrap: wrap;">
+                <div class="tempo">
+                    <h1>⏳</h1>
+                    <h3>Melhor gestão do tempo</h3>
+                    <p>Evite chegar demasiado cedo à paragem e esperar desnecessariamente.</p>
+                </div>
+                <div class="notificacoes">
+                    <h1>🔔</h1>
+                    <h3>Notificações</h3>
+                    <p>Receba alertas quando o autocarro se aproxima da sua paragem.</p>
+                </div>
+                <div class="historico">
+                    <h1>📜</h1>
+                    <h3>Histórico de viagens</h3>
+                    <p>Consulte as suas deslocações anteriores e padrões de utilização.</p>
+                </div>
+            </section>
+        </section>
+
+        <!-- 6. PLANOS -->
+        <section id="planos" style="padding: 60px 0; text-align: center;">
+            <h2 class="planosTitulo">Planos</h2>
+            <h1>Escolhe o plano certo para ti</h1>
+            <p>Começa gratuitamente e passa para o Premium quando <br>quiseres desbloquear toda a experiência BusTrack.</p>
+            <div class="uneCaixas" style="justify-content: center;">
+                <div class="caixa">
+                    <h3 style="color: gray; font-size: 14px;">GRATUITO</h3>
+                    <div class="precoContainer" style="justify-content: center;">
+                        <span class="valor">0€ </span>
+                        <span class="periodo">/Mês</span>
+                    </div>
+                    <p style="margin-top: 0px; margin-bottom: 75px;">Para quem quer experimentar o BusTrack.</p>
+                    <div class="listaPlanos">
+                        <p>Localização em tempo real</p>
+                        <p>Mapa Interativo</p>
+                        <p>Consulta de paragens</p>
+                    </div>
+                    <button class="botaoCaixa">Experimente Já!</button>
+                </div>
+                <div class="caixaDrta">
+                    <h3 style="color: rgb(186, 245, 245); font-size: 14px;">PREMIUM</h3>
+                    <div class="precoContainer" style="justify-content: center;">
+                        <span class="valor">2,99€ </span>
+                        <span class="periodo">/Mês</span>
+                    </div>
+                    <p style="margin-top: 0px; margin-bottom: 75px; color: white; opacity: 50%;">Para quem quer a experiência completa.</p>
+                    <div class="listaPlanosDrta">
+                        <p>Localização em tempo real</p>
+                        <p>Mapa Interativo</p>
+                        <p>Consulta de paragens</p>
+                        <p>Linhas Favoritas</p>
+                        <p>Sem Anúncios</p>
+                    </div>
+                    <button class="botaoCaixaDrta">Compre Já!</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 7. TECNOLOGIA -->
+        <section id="tecnologia" style="padding: 100px 0; text-align: center;">
+            <h2>Tecnologia</h2>
+            <p style="color: gray;">Informação sobre a tecnologia (A preencher...)</p>
+        </section>
+
+        <!-- 8. CONTACTOS -->
+        <section id="contactos" style="padding: 100px 0; text-align: center;">
+            <h2>Contactos</h2>
+            <p style="color: gray;">Informação de contacto (A preencher...)</p>
+        </section>
     </main>
 
     <footer>
-
+        <p style="text-align: center; padding: 20px; color: gray;">© 2026 PrimeTrack. Todos os direitos reservados.</p>
     </footer>
 
     <script src="js/script.js"></script>
-
 </body>
 </html>
