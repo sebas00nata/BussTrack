@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+/* =========================================
+   1. GERAL E INÍCIO (O teu style.css original)
+   ========================================= */
 *{
     margin: 0;
     padding: 0;
@@ -13,11 +19,9 @@ body{
     min-height: 100vh;
     background-color: #0b1b2a;
     color: white;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 60px 100px ;
     gap: 80px;
 }
@@ -65,7 +69,6 @@ body{
     font-size: 12px;
     color: #94a3b8;
     margin-left: -5px;
-
 }
 nav {
     display: flex;
@@ -74,7 +77,6 @@ nav {
 }
 nav a:hover {
     color: #38bdf8;
-
 }
 nav a.active {
     color: #38bdf8;
@@ -84,13 +86,7 @@ nav a {
     text-decoration: none;
     font-size: 14px;
 }
-nav a {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-size: 14px;
-}
 .phone {
-    
     flex-shrink: 0;
     width: 320px;
     height: 600px;
@@ -100,10 +96,9 @@ nav a {
     position: relative;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-
+    box-shadow: 0 0 20px 50px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-
 }
 .phone-top{
     width: 110px;
@@ -147,7 +142,6 @@ nav a {
     margin-top: 0px;
     font-size: 13px;
     color: #94a3b8;
-
 }
 .bus-info b{
     color: #38bdf8;
@@ -159,8 +153,7 @@ nav a {
     justify-content: space-between;
     margin-bottom: 6px;
 }
-.bus-info
-.badge-live{
+.bus-info .badge-live{
     font-size: 11px;
     font-weight: 700;
     color:#38bdf8;
@@ -171,8 +164,7 @@ nav a {
     gap: 15px;
     margin-bottom: 35px;
 }
-.btn-primary,
-.btn-secondary{
+.btn-primary, .btn-secondary{
     padding: 14px 22px;
     border-radius: 8px;
     text-decoration: none;
@@ -199,4 +191,378 @@ nav a {
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+}
+.features div span {
+    color: white;
+}
+
+/* =========================================
+   2. SOBRE NÓS (O teu sobreNos.css original)
+   ========================================= */
+#sobre-nos {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px 10px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+#sobre-nos .paginaSobreNos {
+    display: flex;
+    align-items: flex-start;
+    align-items: left;
+}
+#sobre-nos .colunaEsquerda {
+    flex: 1;
+    margin-right: 450px;
+    margin-left: 100px ;
+}
+#sobre-nos .sobrenosStyle {
+    font-family: Inter, sans-serif;
+    color:#00b4d8;
+    font-size: 26px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+#sobre-nos .uneCaixas {
+    display: flex;
+    gap: 20px;
+    margin-top: 60px;
+    align-items: stretch;
+}
+#sobre-nos .caixa {
+    flex: 2;
+    background-color: #f0f4ff;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 50px;
+    max-width: 100%;
+    min-height: 250px;
+}
+#sobre-nos .caixa h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+#sobre-nos .caixa p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+#sobre-nos .pstyleSobreNos {
+    padding: auto;
+    color: #64748b;
+}
+
+/* 
+   3. O PRODUTO (O teu Busstrack.css original)
+    */
+#bustrack {
+    margin-top : 100px;
+    background-color: #0b1b2a;
+    color: white;
+    padding-bottom: 50px;
+}
+#bustrack .produto {
+    text-transform: uppercase;
+    display: flex;
+    color:  #00b4d8;
+    justify-content: center;
+    font-family: 'arial', sans-serif;
+    padding-top: 50px;
+}
+#bustrack .titulo {
+    font-family: Outfit, sans-serif;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+}
+#bustrack .descricao {
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgb(170, 166, 166);
+    margin-bottom: 90px;
+}
+#bustrack .problema {
+    max-width: 620px;
+    width: 90%;
+    margin-left: 270px;
+    text-align: left;
+    font-size: 14px;
+    font-family: Outfit, sans-serif;
+    background-color: #0b2a3b;
+    border: 1px solid #006b91;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+#bustrack .solucao {
+    DISPLAY: block; 
+    max-width: 630px;
+    width: 90%;
+    margin-left: 270px;
+    text-align: left;
+    font-size: 18px;
+    font-family: Outfit, sans-serif;
+    background-color: #0b2a3b;
+    border: 1px solid #006b91;
+    border-radius: 16px;
+    padding: 24px;
+}
+#bustrack .tamanho-texto {
+    margin-left: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    width: 90%;
+}
+#bustrack .tamanho-texto2 {
+    margin-left: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+    width: 90%;
+}
+#bustrack .lado-lado{
+    display: flex;
+    margin-left: 37px;
+    margin-top: -39px;
+    font-size:18px;
+}
+#bustrack .fundo-simb {
+    background-color: rgba(255, 0, 0, 0.3);
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+#bustrack .fundo-verde {
+    background-color: rgba(0, 180, 216, 0.3);
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+#bustrack .lado-lado2{
+    display: flex;
+    margin-left: 40px;
+    margin-top: -50px;
+    font-size:16px;
+}
+
+/* =========================================
+   4. COMO FUNCIONA (O teu comoFunciona.css original)
+   ========================================= */
+#como-funciona {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:center; 
+    justify-content: center;
+    margin-top: 65px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+#como-funciona .comoFuncionaTitulo{
+    font-family: Inter, sans-serif;
+    color:#00b4d8;
+    font-size: 16px; 
+    padding: 10px;
+}
+#como-funciona .uneCaixas{
+    display: flex;
+    gap: 30px;
+    margin-top: 75px;
+    align-items: stretch;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+#como-funciona .caixa{
+    flex: 2;
+    background-color: #f0f4ff;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+    width: 150px;
+}
+#como-funciona p{
+    font-size: 16px;
+}
+#como-funciona h3{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#como-funciona h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* =========================================
+   5. FUNCIONALIDADES (O teu funcionalidade.css original)
+   ========================================= */
+#funcionalidades {
+    font-family: Outfit, sans-serif;
+    background-color: white;
+    padding-bottom: 50px;
+}
+#funcionalidades .titulo {
+    font-family: Outfit, sans-serif;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 100px;
+    color: #34b3e0;
+}
+#funcionalidades .texto {
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgb(0, 0, 0);
+    margin-bottom: 90px;
+}
+#funcionalidades .localiza, 
+#funcionalidades .mapa, 
+#funcionalidades .percursos,
+#funcionalidades .tempo,
+#funcionalidades .notificacoes,
+#funcionalidades .historico {
+    justify-content: center;
+    text-align: left;
+    background-color: #d9e2f0c9;
+    display: flex;
+    max-width: 900px;
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #64748b;
+}
+
+/* =========================================
+   6. PLANOS (O teu planos.css original)
+   ========================================= */
+#planos {
+    background-color: #0b1b2a;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    padding: 50px 0;
+}
+#planos p{
+    font-size: 18px;
+    color: rgb(170, 166, 166);
+    font-family: 'Inter', sans-serif;
+}
+#planos h1, #planos h2, #planos h3{
+    font-family: 'Inter', sans-serif;
+}
+#planos .planosTitulo{
+    color: #00b4d8;
+    font-family: 'arial', sans-serif;
+}
+#planos .caixa{
+    background-color: #0a131e;
+    padding: 110px;
+    padding-top: 10px;
+    margin-left: 0;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: #0a131e;
+    padding-bottom: 10px;
+    margin-bottom: 100px;
+}
+#planos .caixaDrta{
+    background-color: #00b8d9;
+    padding: 110px;
+    padding-top: 10px;
+    margin-left: 0;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: white;
+    padding-bottom: 200px;
+    margin-bottom: 100px;
+}
+#planos .uneCaixas{
+    display: flex;
+    align-items: stretch;
+    gap: 40px;
+}
+#planos .precoContainer{
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-family: 'Inter', sans-serif;
+}
+#planos .valor{
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: bold;
+}
+#planos .listaPlanos{
+    text-align: left;
+    justify-content: left;
+    margin-left: -60px;
+    padding-bottom: 20px;
+}
+#planos .listaPlanosDrta{
+    text-align: left;
+    color: white;
+    margin-left: -60px;
+    padding-bottom: 35px;
+}
+#planos .listaPlanosDrta p {
+    color: white;
+    padding-bottom: 20px;
+}
+#planos .botaoCaixa{
+    background-color: #1d2c53;
+    padding: 15px 150px;
+    border-radius: 5px;
+    border:none;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+#planos .botaoCaixa:hover{
+    background-color: #0092b3; 
+}
+#planos .botaoCaixaDrta{
+    background-color: white;
+    padding: 15px 150px;
+    border-radius: 5px;
+    border:none;
+    color: #00b8d9;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+#planos .botaoCaixaDrta:hover{
+    background-color: #1d2c53;
 }

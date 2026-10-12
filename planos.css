@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 body{
     background-color: #0b1b2a;
     margin-top: 50px;
@@ -10,6 +14,10 @@ body{
 body p{
     font-size: 18px;
     color: rgb(170, 166, 166);
+    font-family: 'Inter', sans-serif;
+}
+h1, h2, h3{
+    font-family: 'Inter', sans-serif;
 }
 .planosTitulo{
     color: #00b4d8;
@@ -17,20 +25,78 @@ body p{
 }
 .caixa{
     background-color: #0a131e;
-    padding: 200px;
+    padding: 110px;
+    padding-top: 10px;
+    margin-left: 0;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: #0a131e;
+    padding-bottom: 10px;
+}
+.caixaDrta{
+    background-color: #00b8d9;
+    padding: 110px;
+    padding-top: 10px;
+    margin-left: 0;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: white;
+    padding-bottom: 10px;
 }
 .uneCaixas{
     display: flex;
     align-items: stretch;
-    gap: 20px;
+    gap: 40px;
 }
 .precoContainer{
     display: flex;
     align-items: baseline;
     gap: 4px;
+    font-family: 'Inter', sans-serif;
 }
 .valor{
     color: #ffffff;
     font-size: 48px;
     font-weight: bold;
+}
+.listaPlanos{
+    text-align: left;
+    justify-content: left;
+    margin-left: -60px;
+    padding-bottom: 20px;
+}
+.listaPlanosDrta{
+    text-align: left;
+    color: white;
+    margin-left: -60px;
+    padding-bottom: 20px;
+}
+.listaPlanosDrta p {
+    color: white;
+}
+.botaoCaixa{
+    background-color: #1d2c53;
+    padding: 15px 150px;
+    border-radius: 5px;
+    border:none;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16;
+}
+.botaoCaixa:hover{
+    background-color: #0092b3; /*Codigo para mudar de cor ao passar mouse por cima*/
+}
+.botaoCaixaDrta{
+    background-color: white;
+    padding: 15px 150px;
+    border-radius: 5px;
+    border:none;
+    color: #00b8d9;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16;
+}
+.botaoCaixaDrta:hover{
+    background-color: #1d2c53;
 }
