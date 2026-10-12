@@ -1,36 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+/* =========================================
+   1. GERAL E INÍCIO (O teu style.css original)
+   ========================================= */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-html {
-    overscroll-behavior-y: none;
 }
 body{
     font-family: arial, sans-serif;
     background-color: white;
     color:  #111827;
     min-height: 100vh;
-    padding-top: 80px;
-}
-.badge{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background-color: #102b40;
-    border: 1px solid #1c4058;
-    border-radius: 50px;
-    color: #38bdf8;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 10px;
 }
 .hero{
-    position: relative;
-    isolation: isolate;
     min-height: 100vh;
     background-color: #0b1b2a;
     color: white;
@@ -39,20 +24,6 @@ body{
     justify-content: space-between;
     padding: 60px 100px ;
     gap: 80px;
-}
-.hero::before{
-   content: '';
-   position: absolute;
-   inset: 0;
-
-   background-image: 
-   linear-gradient(rgba(56, 189, 248, 0.08)1px, transparent 1px),
-   linear-gradient(90deg, rgba(56, 189, 248, 0.08)1px, transparent 1px);
-
-   background-size: 50px 50px;
-   pointer-events: none;
-   z-index: -1;
-
 }
 .hero-content{
     max-width: 650px;
@@ -73,12 +44,7 @@ body{
     line-height: 1.6;
 }
 .navbar{
-    isolation: isolate;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    z-index: 1000;
     height: 80px;
     display: flex;
     align-items: center;
@@ -86,18 +52,6 @@ body{
     padding: 0 60px;
     background-color: #0b1b2a;
     color: white;
-}
-.navbar::before{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-    linear-gradient(rgba(56, 189, 248, 0.08)1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.08)1px, transparent 1px);
-
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: -1;
 }
 .logo{
     display: flex;
@@ -311,7 +265,7 @@ nav a {
     margin-top : 100px;
     background-color: #0b1b2a;
     color: white;
-    padding-bottom: 50px;
+    margin-bottom: -80px;
 }
 #bustrack .produto {
     text-transform: uppercase;
@@ -326,7 +280,7 @@ nav a {
     width: 90%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
     color: #ffffff;
 }
 #bustrack .descricao {
@@ -441,7 +395,7 @@ nav a {
     padding: 10px;
 }
 #como-funciona .uneCaixas{
-    display: flex; 
+    display: flex;
     gap: 30px;
     margin-top: 75px;
     align-items: stretch;
@@ -485,12 +439,10 @@ nav a {
     color: #34b3e0;
 }
 #funcionalidades .texto {
-    font-family: 'arial', sans-serif;
     max-width: 600px;
     width: 90%;
     margin: 0 auto;
     text-align: center;
-    font-size: 37px;
     font-size: 34px;
     line-height: 1.6;
     color: rgb(0, 0, 0);
@@ -543,27 +495,27 @@ nav a {
     padding: 110px;
     padding-top: 10px;
     margin-left: 0;
-    text-align: left;
+    text-align: center;
     border-radius: 16px;
     box-shadow: #0a131e;
-    margin-bottom: 10px;
-    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 100px;
 }
 #planos .caixaDrta{
     background-color: #00b8d9;
     padding: 110px;
     padding-top: 10px;
     margin-left: 0;
-    text-align: left;
+    text-align: center;
     border-radius: 16px;
     box-shadow: white;
-    position: relative;
+    padding-bottom: 200px;
+    margin-bottom: 100px;
 }
 #planos .uneCaixas{
     display: flex;
     align-items: stretch;
-    gap: 50px;
-    margin-top: 50px;
+    gap: 40px;
 }
 #planos .precoContainer{
     display: flex;
@@ -582,9 +534,6 @@ nav a {
     margin-left: -60px;
     padding-bottom: 20px;
 }
-.listaPlanos p{
-    height: 50px;
-}
 #planos .listaPlanosDrta{
     text-align: left;
     color: white;
@@ -593,7 +542,7 @@ nav a {
 }
 #planos .listaPlanosDrta p {
     color: white;
-    height: 50px;
+    padding-bottom: 20px;
 }
 #planos .botaoCaixa{
     background-color: #1d2c53;
@@ -604,15 +553,7 @@ nav a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 16px;
-    margin-bottom: auto;
-
-    position: absolute;
-    bottom: 20px; /* <-- MUDA AQUI! 20px é o espaço até ao fundo. Se quiseres menos espaço, põe 10px. Se quiseres mais, põe 40px */
-    left: 50%;
-    transform: translateX(-50%); /* Isto mantém o botão sempre perfeitamente centrado */
-    width: 80%; /* Garante que o botão não fica muito esmagado */
 }
-
 #planos .botaoCaixa:hover{
     background-color: #0092b3; 
 }
@@ -625,15 +566,7 @@ nav a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 16px;
-    margin-bottom: auto;
-
-    position: absolute;
-    bottom: 20px; /* <-- MUDA AQUI! 20px é o espaço até ao fundo. Se quiseres menos espaço, põe 10px. Se quiseres mais, põe 40px */
-    left: 50%;
-    transform: translateX(-50%); /* Isto mantém o botão sempre perfeitamente centrado */
-    width: 80%; /* Garante que o botão não fica muito esmagado */
 }
-
 #planos .botaoCaixaDrta:hover{
     background-color: #1d2c53;
 }
