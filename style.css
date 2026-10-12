@@ -1,21 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
-
-/* =========================================
-   1. GERAL E INÍCIO (O teu style.css original)
-   ========================================= */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+html {
+    overscroll-behavior-y: none;
 }
 body{
     font-family: arial, sans-serif;
     background-color: white;
     color:  #111827;
     min-height: 100vh;
+    padding-top: 80px;
+}
+.badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #102b40;
+    border: 1px solid #1c4058;
+    border-radius: 50px;
+    color: #38bdf8;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 .hero{
+    position: relative;
+    isolation: isolate;
     min-height: 100vh;
     background-color: #0b1b2a;
     color: white;
@@ -24,6 +39,20 @@ body{
     justify-content: space-between;
     padding: 60px 100px ;
     gap: 80px;
+}
+.hero::before{
+   content: '';
+   position: absolute;
+   inset: 0;
+
+   background-image: 
+   linear-gradient(rgba(56, 189, 248, 0.08)1px, transparent 1px),
+   linear-gradient(90deg, rgba(56, 189, 248, 0.08)1px, transparent 1px);
+
+   background-size: 50px 50px;
+   pointer-events: none;
+   z-index: -1;
+
 }
 .hero-content{
     max-width: 650px;
@@ -44,7 +73,12 @@ body{
     line-height: 1.6;
 }
 .navbar{
+    isolation: isolate;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 1000;
     height: 80px;
     display: flex;
     align-items: center;
@@ -52,6 +86,18 @@ body{
     padding: 0 60px;
     background-color: #0b1b2a;
     color: white;
+}
+.navbar::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+    linear-gradient(rgba(56, 189, 248, 0.08)1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.08)1px, transparent 1px);
+
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -1;
 }
 .logo{
     display: flex;
@@ -409,7 +455,7 @@ nav a {
     padding-top: 10px;
     border-radius: 16px;
     box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
-    width: 150px;
+    width: 240px;
 }
 #como-funciona p{
     font-size: 16px;
@@ -424,6 +470,7 @@ nav a {
 /* =========================================
    5. FUNCIONALIDADES (O teu funcionalidade.css original)
    ========================================= */
+
 #funcionalidades {
     font-family: Outfit, sans-serif;
     background-color: white;
@@ -434,7 +481,7 @@ nav a {
     width: 90%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
     color: #34b3e0;
 }
 #funcionalidades .texto {
@@ -444,9 +491,10 @@ nav a {
     margin: 0 auto;
     text-align: center;
     font-size: 37px;
+    font-size: 34px;
     line-height: 1.6;
     color: rgb(0, 0, 0);
-    margin-bottom: 90px;
+    margin-bottom: 50px;
 }
 #funcionalidades .localiza, 
 #funcionalidades .mapa, 
@@ -454,15 +502,16 @@ nav a {
 #funcionalidades .tempo,
 #funcionalidades .notificacoes,
 #funcionalidades .historico {
-    justify-content: center;
     text-align: left;
-    background-color: #d9e2f0c9;
-    display: flex;
-    max-width: 900px;
-    margin: 20px;
-    padding: 50px;
-    border: 1px solid #64748b;
+    background-color: #d9e2f085;
+    border-radius: 16px;
+    max-width: 440px;
+    margin: 10px;
+    padding: 40px;
+    border:#0000002c 1px solid;
 }
+
+
 
 /* =========================================
    6. PLANOS (O teu planos.css original)
