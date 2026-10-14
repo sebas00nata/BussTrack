@@ -314,7 +314,10 @@ nav a {
     margin-top : 100px;
     background-color: #0b1b2a;
     color: white;
-    margin-bottom: -80px;
+    margin-bottom: -10px;
+    padding-top: 80px;
+    padding-bottom: 150px; 
+    overflow: hidden;
 }
 #bustrack .produto {
     text-transform: uppercase;
@@ -345,7 +348,7 @@ nav a {
 #bustrack .problema {
     max-width: 620px;
     width: 90%;
-    margin-left: 270px;
+    margin-left: 200px;
     text-align: left;
     font-size: 14px;
     font-family: Outfit, sans-serif;
@@ -359,7 +362,7 @@ nav a {
     DISPLAY: block; 
     max-width: 630px;
     width: 90%;
-    margin-left: 270px;
+    margin-left: 200px;
     text-align: left;
     font-size: 18px;
     font-family: Outfit, sans-serif;
@@ -610,8 +613,9 @@ nav a {
     text-align: center;
     border-radius: 16px;
     box-shadow: #0a131e;
-    padding-bottom: 10px;
-    margin-bottom: 100px;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    position: relative;
 }
 #planos .caixaDrta{
     background-color: #00b8d9;
@@ -621,19 +625,26 @@ nav a {
     text-align: center;
     border-radius: 16px;
     box-shadow: white;
-    padding-bottom: 200px;
-    margin-bottom: 100px;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    position: relative;
 }
 #planos .uneCaixas{
     display: flex;
     align-items: stretch;
     gap: 40px;
+    margin-top: 50px;
 }
 #planos .precoContainer{
-    display: flex;
+    display: flex !important;
+    justify-content: flex-start !important; /* Força o alinhamento à esquerda */
     align-items: baseline;
     gap: 4px;
     font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+    width: 100% !important; /* Obriga o contentor a esticar tudo */
+    padding-left: 0 !important; 
+    margin-left: 0 !important;
 }
 #planos .valor{
     color: #ffffff;
@@ -652,6 +663,10 @@ nav a {
     margin-left: -60px;
     padding-bottom: 35px;
 }
+#planos .listaPlanos p{
+    color: white;
+    padding-bottom: 20px;
+}
 #planos .listaPlanosDrta p {
     color: white;
     padding-bottom: 20px;
@@ -665,6 +680,12 @@ nav a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 16px;
+
+    position: absolute;
+    bottom: 35px; /* Distância exata entre o botão e o fundo da caixa */
+    left: 50%; /* Empurra para o meio */
+    transform: translateX(-50%); /* Centra o botão perfeitamente */
+    width: 80%; /* Opcional: Define a largura do botão para não ficar esmagado */
 }
 #planos .botaoCaixa:hover{
     background-color: #0092b3; 
@@ -678,6 +699,12 @@ nav a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 16px;
+
+    position: absolute;
+    bottom: 35px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 70%; 
 }
 #planos .botaoCaixaDrta:hover{
     background-color: #1d2c53;
