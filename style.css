@@ -348,7 +348,7 @@ nav a {
 #bustrack .problema {
     max-width: 620px;
     width: 90%;
-    margin-left: 200px;
+    margin-left: 490px;
     text-align: left;
     font-size: 14px;
     font-family: Outfit, sans-serif;
@@ -362,7 +362,7 @@ nav a {
     DISPLAY: block; 
     max-width: 630px;
     width: 90%;
-    margin-left: 200px;
+    margin-left: 490px;
     text-align: left;
     font-size: 18px;
     font-family: Outfit, sans-serif;
@@ -708,4 +708,26 @@ nav a {
 }
 #planos .botaoCaixaDrta:hover{
     background-color: #1d2c53;
+}
+
+
+/* 
+   7. Tecnologia 
+    */
+
+
+#tecnologia .titulo {
+    color: #00b4d8;
+    margin-bottom: 20px;
+    font-size: 14px;
+
+}
+
+#tecnologia .titulo2 {
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+}
+
+#tecnlogia .texto {
+    color: #ecf2f3;
 }
