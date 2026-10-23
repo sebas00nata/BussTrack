@@ -443,44 +443,59 @@ nav a {
     margin-left: -10px;
     vertical-align: middle;
 }
-/* CONTENTOR PAI (Segura as duas colunas lado a lado) */
 #bustrack .uneColunas {
     display: flex !important;
-    align-items: flex-start !important; /* Alinha o TOPO de ambas as colunas */
+    align-items: flex-start !important; /* Obriga ambas as colunas a comecar alinhadas no topo */
     justify-content: space-between !important;
-    gap: 230px !important; /* Espaço uniforme entre o texto e a imagem */
+    gap: 50px !important; /* Espaço entre o texto e a imagem */
     margin-top: 40px !important;
     width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-/* COLUNA ESQUERDA (Caixas do Problema e Solução) */
+/* COLUNA DA ESQUERDA (Caixas 'O problema' e 'A Nossa solução') */
 #bustrack .colunaEsquerda {
     flex: 1 !important;
     display: flex !important;
-    flex-direction: column !important; /* Coloca o Problema e a Solução um debaixo do outro */
-    gap: 20px !important;
-    margin: 0 !important; /* Limpa margens antigas que deslocam o bloco */
+    flex-direction: column !important; /* Empilha as duas caixas verticalmente */
+    gap: 25px !important;
+    margin: 0 !important;
     width: 100% !important;
 }
 
-/* COLUNA DIREITA (Imagem) */
+/* Estilos das caixas dentro da coluna esquerda */
+#bustrack .problema, 
+#bustrack .solucao {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important; /* Anula margens antigas de 270px que empurravam o bloco */
+    background-color: #0b2a3b;
+    border: 1px solid #006b91;
+    border-radius: 16px;
+    padding: 24px;
+    box-sizing: border-box !important;
+}
+
+/* COLUNA DA DIREITA (A Imagem) */
 #bustrack .colunaDireita {
     flex: 1 !important;
-    margin: 0 !important;
     display: flex !important;
     justify-content: flex-end !important;
     align-items: flex-start !important;
+    margin: 0 ;
     width: 100% !important;
 }
 
-/* AJUSTE DA IMAGEM */
+/* Ajuste e Enquadramento da Imagem */
 #bustrack .colunaDireita img {
     width: 100% !important;
     max-width: 100% !important;
-    height: 500px !important;
+    height:500px !important;
     display: block !important;
-    border-radius: 12px;
-    margin-right:30px ;
+    border-radius: 16px !important;
+    margin: 0 !important; /* Garante que não tem margens que a atirem para cima da caixa */
 }
 
 /* 
