@@ -1,805 +1,1397 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+/* =========================================================
+   BUSSTRACK - style.css
 
-/* =========================================
-   1. GERAL E INÍCIO (O teu style.css original)
-   ========================================= */
-*{
+   ÍNDICE
+   1. Variáveis (cores, espaçamentos, tipografia)
+   2. Reset e base
+   3. Layout reutilizável (container, secções, grids, split)
+   4. Componentes (botões, badges, cards, listas, ícones)
+   5. Navegação e logótipo
+   5b. Pontos de navegação laterais
+   5c. Animações (scroll e hover)
+   6. Secção: Início (hero + telemóvel)
+   7. Secção: Sobre nós
+   8. Secção: BussTrack (produto)
+   9. Secção: Planos
+  10. Rodapé
+  11. Responsivo
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS
+   Para mudar o design mais tarde, altera sobretudo estes valores.
+   ========================================================= */
+:root {
+    /* Cores */
+    --color-dark:        #0b1b2a;
+    --color-darker:      #0a131e;
+    --color-panel:       #0b2a3b;
+    --color-panel-border:#006b91;
+    --color-accent:      #38bdf8;
+    --color-accent-2:    #00b4d8;
+    --color-accent-3:    #00b8d9;
+
+    --color-text:        #111827;
+    --color-text-muted:  #555555;
+    --color-text-light:  #cbd5e1;
+    --color-text-soft:   #94a3b8;
+    --color-white:       #ffffff;
+
+    --color-bg-light:    #ffffff;
+    --color-bg-alt:      #e6e6e6;
+    --color-card-tint:   #f0f4ff;
+    --color-border:      rgba(0, 0, 0, 0.17);
+
+    /* Tipografia */
+    --font-main: 'Inter', Arial, sans-serif;
+
+    /* Espaçamentos */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    --space-xl: 64px;
+
+    --section-y: 90px;
+    --navbar-height: 80px;
+    --container-width: 1200px;
+
+    /* Forma */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-pill: 50px;
+
+    --shadow-card: 0 2px 14px rgba(0, 0, 0, 0.12);
+    --shadow-strong: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   2. RESET E BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
+    scroll-behavior: smooth;
     overscroll-behavior-y: none;
 }
-body{
-    font-family: arial, sans-serif;
-    background-color: white;
-    color:  #111827;
-    min-height: 100vh;
-    padding-top: 80px;
+
+/* Barra de scroll azul, a combinar com os botões */
+html::-webkit-scrollbar {
+    width: 12px;
 }
-.badge{
+
+html::-webkit-scrollbar-track {
+    background-color: var(--color-dark);
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: var(--color-accent);
+    border: 3px solid var(--color-dark);   /* cria o espaço à volta da barra */
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background-color: #0ea5e9;
+}
+
+/* Firefox e navegadores sem suporte ao estilo acima */
+@supports not selector(::-webkit-scrollbar) {
+    html {
+        scrollbar-color: var(--color-accent) var(--color-dark);
+    }
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    background-color: var(--color-bg-light);
+    line-height: 1.5;
+    min-height: 100vh;
+    padding-top: var(--navbar-height);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* Evita que os títulos das secções fiquem escondidos debaixo da navbar fixa */
+section[id] {
+    scroll-margin-top: var(--navbar-height);
+}
+
+
+/* =========================================================
+   3. LAYOUT REUTILIZÁVEL
+   ========================================================= */
+
+/* Largura máxima centrada */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* --- Secções --- */
+.section {
+    padding: var(--section-y) 0;
+}
+
+.section--light  { background-color: var(--color-bg-light); }
+.section--alt    { background-color: var(--color-bg-alt); }
+.section--tint   { background-color: #eef5ff; }
+.section--dark   { background-color: var(--color-dark);   color: var(--color-white); }
+.section--darker { background-color: var(--color-dark);   color: var(--color-white); }
+
+/* Cabeçalho de secção: etiqueta + título + texto */
+.section-header {
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+    text-align: center;
+}
+
+.eyebrow {
+    color: var(--color-accent-2);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+}
+
+.section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+}
+
+.section-title--left {
+    margin-bottom: var(--space-md);
+}
+
+.section-lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.section--dark .section-lead,
+.section--darker .section-lead {
+    color: var(--color-text-soft);
+}
+
+.lead {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+}
+
+/* --- Grelhas --- */
+.grid {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* --- Duas colunas (texto + imagem) --- */
+.split {
+    display: flex;
+    align-items: center;
+    gap: 72px;
+}
+
+/* A imagem ocupa a mesma altura das caixas ao lado (topo e fundo alinhados) */
+.split--stretch {
+    align-items: stretch;
+}
+
+.split--stretch .split__media {
+    position: relative;
+    min-height: 320px;
+}
+
+.split--stretch .split__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.split__text,
+.split__media {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Empilha elementos na vertical com espaço entre eles */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.rounded-img {
+    width: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.mt-lg { margin-top: var(--space-lg); }
+
+
+/* =========================================================
+   4. COMPONENTES
+   ========================================================= */
+
+/* --- Badges --- */
+.badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
     padding: 8px 16px;
     background-color: #102b40;
     border: 1px solid #1c4058;
-    border-radius: 50px;
-    color: #38bdf8;
+    border-radius: var(--radius-pill);
+    color: var(--color-accent);
     font-size: 14px;
     font-weight: 500;
+}
+
+.badge-live {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--color-accent);
+}
+
+/* --- Botões --- */
+.btn {
+    display: inline-block;
+    padding: 14px 22px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+.btn--primary {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.btn--primary:hover {
+    background-color: #0ea5e9;
+    box-shadow: 0 0 10px #0d4579, 0 0 30px #0d4579, 0 0 60px #0d4579;
+}
+
+.btn--outline {
+    border-color: #475569;
+    color: var(--color-white);
+}
+
+.btn--outline:hover {
+    background-color: #1e293b;
+    box-shadow: 0 0 10px #575656, 0 0 30px #575656, 0 0 60px #575656;
+}
+
+/* --- Cards --- */
+.card {
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+}
+
+/* Ícones SVG (definidos no topo do index.html) */
+.sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Quadrado com o ícone no topo dos cards */
+.card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-sm);
+    border-radius: 12px;
+    background-color: rgba(0, 180, 216, 0.14);
+    color: var(--color-accent-2);
+    font-size: 24px;
+}
+
+.card__title {
+    font-size: 20px;
+    line-height: 1.3;
     margin-bottom: 10px;
 }
-.hero{
-    position: relative;
-    isolation: isolate;
-    min-height: 100vh;
-    background-color: #0b1b2a;
-    color: white;
+
+.card p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Variações */
+.card--tinted {
+    background-color: var(--color-card-tint);
+    box-shadow: var(--shadow-card);
+    color: var(--color-text);
+}
+
+.card--tinted p {
+    color: var(--color-text-muted);
+}
+
+.card--outline {
+    background-color: rgba(217, 226, 240, 0.52);
+    border: 1px solid var(--color-border);
+    padding: var(--space-lg);
+}
+
+.card--outline p {
+    color: var(--color-text-muted);
+}
+
+.card--panel {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-panel-border);
+    padding: 28px;
+}
+
+.card--panel p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-text-light);
+}
+
+.card--glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.card--glass .card__title {
+    color: var(--color-accent);
+}
+
+.card--glass p {
+    color: var(--color-text-light);
+}
+
+/* Cabeçalho de um card: ícone + título lado a lado */
+.card__head {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 60px 100px ;
-    gap: 80px;
+    gap: 12px;
+    margin-bottom: var(--space-sm);
 }
-.hero::before{
-   content: '';
-   position: absolute;
-   inset: 0;
 
-   background-image: 
-   linear-gradient(rgba(56, 189, 248, 0.08)1px, transparent 1px),
-   linear-gradient(90deg, rgba(56, 189, 248, 0.08)1px, transparent 1px);
+.card__head .card__title {
+    margin-bottom: 0;
+}
 
-   background-size: 50px 50px;
-   pointer-events: none;
-   z-index: -1;
+/* Caixinha com ícone */
+.icon-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-size: 20px;
+}
 
-}
-.hero-content{
-    max-width: 650px;
-    flex: 1;
-}
-.hero h1 {
-    font-size: 48px;
-    line-height: 1.1;
-    margin: 20px 0;
-}
-.hero h1 span {
-    color: #38bdf8;
-}
-.hero p {
-    font-size: 18px;
-    color: #cbd5e1;
-    margin-bottom: 30px;
+.icon-box--danger { background-color: rgba(255, 0, 0, 0.3);   color: #fca5a5; }
+.icon-box--accent { background-color: rgba(0, 180, 216, 0.3); color: var(--color-accent); }
+
+/* --- Lista com marcadores --- */
+.list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    font-size: 16px;
     line-height: 1.6;
+    color: var(--color-text-light);
 }
-.navbar{
-    isolation: isolate;
+
+.list li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: var(--color-accent-2);
+}
+
+
+/* =========================================================
+   5. NAVEGAÇÃO E LOGÓTIPO
+   ========================================================= */
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 1000;
-    height: 80px;
+    isolation: isolate;
+    width: 100%;
+    height: var(--navbar-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 60px;
-    background-color: #0b1b2a;
-    color: white;
+    background-color: var(--color-dark);
+    color: var(--color-white);
 }
-.navbar::before{
+
+/* Fundo quadriculado (usado também no hero) */
+.navbar::before,
+.hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
-    linear-gradient(rgba(56, 189, 248, 0.08)1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.08)1px, transparent 1px);
-
-    background-size: 50px 50px;
-    pointer-events: none;
     z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
-.logo{
+
+.logo {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
-.logo-icon{
-    font-size: 30px;
+
+.logo__icon {
+    display: inline-flex;
+    font-size: 32px;
+    color: var(--color-accent);
 }
-.logo span {
+
+.logo__name {
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 700;
 }
-.logo small {
+
+.logo__by {
     font-size: 12px;
-    color: #94a3b8;
-    margin-left: -5px;
+    color: var(--color-text-soft);
 }
-nav {
+
+.nav {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-nav a:hover {
-    color: #38bdf8;
+
+.nav a {
+    color: var(--color-text-light);
+    font-size: 14px;
+    white-space: nowrap;
+    transition: color 0.2s;
 }
-nav a.active {
-    color: #38bdf8;
+
+.nav a:hover,
+.nav a.active {
+    color: var(--color-accent);
 }
-nav a {
-    color: #cbd5e1;
-    text-decoration: none;
+
+/* Botão do menu: só aparece no telemóvel */
+.menu-toggle {
+    display: none;
+}
+
+
+/* =========================================================
+   5b. PONTOS DE NAVEGAÇÃO LATERAIS
+   ========================================================= */
+.dots {
+    position: fixed;
+    top: 50%;
+    right: 18px;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    transform: translateY(-50%);
+}
+
+.dots__dot {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #94a3b8;
+    box-shadow: 0 0 0 1px rgba(11, 27, 42, 0.35);
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+/* Área de clique maior que o ponto */
+.dots__dot::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+}
+
+/* Nome da secção ao passar o rato */
+.dots__dot::before {
+    content: attr(data-label);
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 16px);
+    padding: 5px 12px;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: opacity 0.2s;
+}
+
+.dots__dot:hover,
+.dots__dot:focus-visible {
+    background-color: var(--color-accent);
+    transform: scale(1.35);
+}
+
+.dots__dot:hover::before,
+.dots__dot:focus-visible::before {
+    opacity: 1;
+}
+
+/* Ponto da secção atual: maior e a brilhar */
+.dots__dot.active {
+    background-color: var(--color-accent);
+    box-shadow:
+        0 0 0 4px rgba(56, 189, 248, 0.25),
+        0 0 14px rgba(56, 189, 248, 0.9);
+    transform: scale(1.45);
+}
+
+
+/* =========================================================
+   5c. ANIMAÇÕES
+   - .reveal / .is-visible: blocos que aparecem ao fazer scroll
+     (a classe .reveal é posta pelo js/script.js)
+   - hover: cards que se levantam ao passar o rato
+   ========================================================= */
+.js .reveal:not(.is-visible) {
+    opacity: 0;
+}
+
+.reveal.is-visible {
+    /* "backwards": depois de acabar, voltam ao estilo normal (o hover continua a funcionar) */
+    animation: reveal-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay, 0s) backwards;
+}
+
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+}
+
+.card,
+.plan {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+@media (hover: hover) {
+    .card:hover,
+    .plan:hover {
+        transform: translateY(-6px);
+    }
+
+    .card--tinted:hover  { box-shadow: 0 14px 30px rgba(11, 27, 42, 0.18); }
+    .card--outline:hover { box-shadow: 0 14px 30px rgba(11, 27, 42, 0.12); border-color: rgba(0, 180, 216, 0.5); }
+    .card--panel:hover   { box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);    border-color: var(--color-accent-2); }
+    .card--glass:hover   { box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);    border-color: rgba(56, 189, 248, 0.6); }
+    .plan:hover          { box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); }
+}
+
+/* Quem prefere menos movimento no sistema não vê animações */
+@media (prefers-reduced-motion: reduce) {
+    .reveal.is-visible { animation: none; }
+    .phone__route { animation: none; }
+
+    .card,
+    .plan { transition: none; }
+}
+
+
+/* =========================================================
+   6. SECÇÃO: INÍCIO (HERO)
+   ========================================================= */
+.hero {
+    /* Foto de fundo (troca por outra mudando só esta linha) */
+    --hero-image: url('imgSobreNos.webp');
+
+    position: relative;
+    isolation: isolate;
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    align-items: center;
+    padding: var(--space-xl) 0;
+    color: var(--color-white);
+
+    /* Camadas, de cima para baixo:
+       1. escurecimento (mais forte à esquerda, onde está o texto)
+       2. foto do autocarro
+       3. cor de base
+       A grelha (.hero::before) fica por cima de tudo isto. */
+    background:
+        linear-gradient(90deg,
+            rgba(11, 27, 42, 0.90) 0%,
+            rgba(11, 27, 42, 0.62) 50%,
+            rgba(11, 27, 42, 0.40) 100%),
+        var(--hero-image) center 75% / cover no-repeat,
+        var(--color-dark);
+}
+
+.hero__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.hero__content {
+    flex: 1;
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: var(--color-accent);
+}
+
+.hero__content > p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 30px;
+}
+
+.hero__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.hero__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    color: var(--color-white);
     font-size: 14px;
 }
+
+.hero__features li::before {
+    content: '✓';
+    margin-right: 8px;
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+/* --- Telemóvel --- */
 .phone {
+    position: relative;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
     width: 320px;
     height: 600px;
+    overflow: hidden;
     background-color: #111827;
     border: 8px solid #1f2937;
     border-radius: 40px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 20px 50px rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
 }
-.phone-top{
+
+.phone__notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 10;
     width: 110px;
     height: 25px;
     background-color: #1f2937;
     border-radius: 0 0 18px 18px;
-    position: absolute;
-    top: 0;
-    left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
 }
-.bus-info{
-    text-align: center;
-    width: calc(100% - 32px);
-    background-color: #122232;
-    color: white;
-    padding: 16px 18px;
-    border-radius: 18px;
+
+.phone__map {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    background-color: #334155;
+}
+
+/* Mapa animado (SVG): ruas, percurso tracejado, paragens e autocarro */
+.phone__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.phone__streets path {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.07);
+    stroke-width: 6;
+}
+
+.phone__route {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 7 8;
+    animation: route-dash 1.2s linear infinite;
+}
+
+@keyframes route-dash {
+    to { stroke-dashoffset: -15; }
+}
+
+.phone__stop {
+    fill: var(--color-dark);
+    stroke: var(--color-accent);
+    stroke-width: 3;
+}
+
+.phone__stop--end {
+    fill: var(--color-accent);
+    stroke: var(--color-white);
+}
+
+.phone__pulse {
+    fill: var(--color-accent);
+    opacity: 0.4;
+}
+
+.phone__bus-dot {
+    fill: var(--color-accent);
+    stroke: var(--color-white);
+    stroke-width: 3;
+}
+
+.phone__bus-icon {
+    fill: none;
+    stroke: var(--color-dark);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.phone__info {
     position: absolute;
     bottom: 16px;
     left: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     z-index: 20;
+    width: calc(100% - 32px);
+    padding: 16px 18px;
+    background-color: #122232;
+    color: var(--color-white);
+    border-radius: 18px;
+    box-shadow: var(--shadow-strong);
+    text-align: center;
 }
-.bus-info strong{
-    font-size: 15px;
-    font-weight: 700;
-    color: #ffffff;
-}
-.bus-info span{
-    display: inline-block;
-    background-color: #dcfce7;
-    color: #16a34a;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 6px 10px;
-    border-radius: 20px;
-}
-.bus-info p{
-    margin-top: 0px;
-    font-size: 13px;
-    color: #94a3b8;
-}
-.bus-info b{
-    color: #38bdf8;
-    font-weight: 700;
-}
-.bus-info-top{
+
+.phone__info-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 6px;
 }
-.bus-info .badge-live{
-    font-size: 11px;
-    font-weight: 700;
-    color:#38bdf8;
-    letter-spacing: 0.5px;
-}
-.buttons{
-    display: flex;
-    gap: 15px;
-    margin-bottom: 35px;
-}
-.btn-primary, .btn-secondary{
-    padding: 14px 22px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-}
-.btn-primary{
-    background-color: #38bdf8;
-    color: #0b1b2a;
-}
-.btn-secondary{
-    
-    border: 1px solid #475569;
-    color: white;
-}
-.btn-primary:hover{
-    box-shadow: 
-        
-        0 0 10px #0d4579,
-        0 0 30px #0d4579,
-        0 0 60px #0d4579;
-    transform: translateY(-4px);
-    background-color:  #0ea5e9;
-}
-.btn-secondary:hover{
-     box-shadow: 
-        0 0 10px #575656,
-        0 0 30px #575656,
-        0 0 60px #575656;
-    transform: translateY(-4px);
-    background-color: #1e293b;
-}
-.map {
-    width: 100%;
-    height: 70%;
-    background-color: #334155;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-.features div span {
-    color: white;
-}
-/* =========================================
-   2. SOBRE NÓS (Corrigido)
-   ========================================= */
-#sobre-nos {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    width: 100%;
-    max-width: 88%;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
 
-#sobre-nos .paginaSobreNos {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    justify-content: space-between !important;
-    gap: 100px !important;
-    width: 100% !important;
-}
-
-/* COLUNA ESQUERDA: Removemos o margin-right: 450px que estava a esmagar tudo! */
-#sobre-nos .colunaDireita {
-    flex: 1.2 !important; /* Ocupa a largura necessária para o texto respirar */
-    margin: 0 !important;  /* LIMPA os 450px e 100px de margem antigos */
-    width: 100% !important;
-}
-
-/* COLUNA DIREITA (IMAGEM) */
-#sobre-nos .colunaEsquerda {
-    flex: 0.8 !important;
-    display: flex;
-    justify-content: flex-end !important;
-    align-items: flex-start !important;
-    margin: 0;
-}
-
-/* Ajuste do tamanho da imagem */
-#sobre-nos .colunaEsquerda img, 
-.imagem-sobre {
-    width: 660px !important;
-    height: 450px !important;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* CAIXAS DA MISSÃO E VISÃO (Lado a Lado com espaço normal) */
-#sobre-nos .uneCaixas {
-    display: flex !important;
-    gap: 20px !important;
-    margin-top: 40px !important;
-    width: 100% !important;
-}
-
-#sobre-nos .caixa {
-    flex: 1 !important;
-    width: 100% !important; /* Corrige o width: 50px antigo */
-    max-width: 100% !important;
-    background-color: #f0f4ff;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
-}
-
-#sobre-nos .caixa h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #000000;
-}
-
-#sobre-nos .caixa p {
+.phone__info strong {
     font-size: 15px;
-    line-height: 1.5;
-    color: #555;
-}   
-/* 
-   3. O PRODUTO (O teu Busstrack.css original)
-    */
-#bustrack {
-    margin-top : 100px;
-    background-color: #0b1b2a;
-    color: white;
-    margin-bottom: -10px;
-    padding-top: 80px;
-    padding-bottom: 150px; 
-    overflow: hidden;
-}
-#bustrack .produto {
-    text-transform: uppercase;
-    display: flex;
-    color:  #00b4d8;
-    justify-content: center;
-    font-family: 'arial', sans-serif;
-    padding-top: 0px;
-}
-#bustrack .titulo {
-    font-family: Outfit, sans-serif;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 10px;
-    color: #ffffff;
-}
-#bustrack .descricao {
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.6;
-    color: rgb(170, 166, 166);
-    margin-bottom: 90px;
-}
-#bustrack .problema {
-    max-width: 620px;
-    width: 90%;
-    margin-left: 490px;
-    text-align: left;
-    font-size: 14px;
-    font-family: Outfit, sans-serif;
-    background-color: #0b2a3b;
-    border: 1px solid #006b91;
-    border-radius: 16px;
-    padding: 30px;
-    margin-bottom: 20px;
-}
-#bustrack .solucao {
-    DISPLAY: block; 
-    max-width: 630px;
-    width: 90%;
-    margin-left: 490px;
-    text-align: left;
-    font-size: 18px;
-    font-family: Outfit, sans-serif;
-    background-color: #0b2a3b;
-    border: 1px solid #006b91;
-    border-radius: 16px;
-    padding: 24px;
-}
-#bustrack .tamanho-texto {
-    margin-left: 15px;
-    font-size: 18px;
-    line-height: 1.8;
-    max-width: 600px;
-    width: 90%;
-}
-#bustrack .tamanho-texto2 {
-    margin-left: 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    max-width: 600px;
-    width: 90%;
-}
-#bustrack .lado-lado{
-    display: flex;
-    margin-left: 50px;
-    margin-top: -24px;
-    font-size:18px;
-    margin-bottom: 20px;
-}
-#bustrack .fundo-simb {
-    background-color: rgba(255, 0, 0, 0.3);
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    padding: 0;
-    margin-right: 5px;
-    vertical-align: middle;
-}
-#bustrack .fundo-verde {
-    background-color: rgba(0, 180, 216, 0.3);
-    width: 35px;
-    height: 35px;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    padding: 0;
-    margin-left: -10px;
-    vertical-align: middle;
-}
-#bustrack .uneColunas {
-    display: flex !important;
-    align-items: flex-start !important; /* Obriga ambas as colunas a comecar alinhadas no topo */
-    justify-content: space-between !important;
-    gap: 50px !important; /* Espaço entre o texto e a imagem */
-    margin-top: 40px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    font-weight: 700;
 }
 
-/* COLUNA DA ESQUERDA (Caixas 'O problema' e 'A Nossa solução') */
-#bustrack .colunaEsquerda {
-    flex: 1 !important;
-    display: flex !important;
-    flex-direction: column !important; /* Empilha as duas caixas verticalmente */
-    gap: 25px !important;
-    margin: 0 !important;
-    width: 100% !important;
+.phone__info p {
+    font-size: 13px;
+    color: var(--color-text-soft);
 }
 
-/* Estilos das caixas dentro da coluna esquerda */
-#bustrack .problema, 
-#bustrack .solucao {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important; /* Anula margens antigas de 270px que empurravam o bloco */
-    background-color: #0b2a3b;
-    border: 1px solid #006b91;
-    border-radius: 16px;
-    padding: 24px;
-    box-sizing: border-box !important;
+.phone__info b {
+    color: var(--color-accent);
+    font-weight: 700;
 }
 
-/* COLUNA DA DIREITA (A Imagem) */
-#bustrack .colunaDireita {
-    flex: 1 !important;
-    display: flex !important;
-    justify-content: flex-end !important;
-    align-items: flex-start !important;
-    margin: 0 ;
-    width: 100% !important;
+
+/* =========================================================
+   7. SECÇÃO: SOBRE NÓS
+   ========================================================= */
+/* A imagem avança para a esquerda, para lá da margem do .container.
+   --image-bleed: 0 = alinhada com o conteúdo, 1 = encosta ao limite do ecrã. */
+#sobre-nos {
+    --image-bleed: 0.7;
 }
 
-/* Ajuste e Enquadramento da Imagem */
-#bustrack .colunaDireita img {
-    width: 100% !important;
-    max-width: 100% !important;
-    height:500px !important;
-    display: block !important;
-    border-radius: 16px !important;
-    margin: 0 !important; /* Garante que não tem margens que a atirem para cima da caixa */
-}
-
-/* 
-   4. COMO FUNCIONA
-    */
-#como-funciona {
-    font-family: Arial, sans-serif;
-    background-color: rgb(230, 230, 230);
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    padding: 60px 20px;
-    text-align: center;
-
-
-    padding-bottom: 50px;
-}
-#como-funciona .comoFuncionaTitulo{
-    font-family: Inter, sans-serif;
-    color:#00b4d8;
-    font-size: 16px; 
-    padding: 10px;
-}
-#como-funciona .uneCaixas{
-    display: flex;
-    gap: 30px;
-    margin-top: 75px;
-    align-items: stretch;
-    margin-left: 200px;
-    margin-right: 200px;
-}
-#como-funciona .caixa{
-    flex: 2;
-    background-color: #f0f4ff;
-    padding: 20px;
-    padding-top: 10px;
-    border-radius: 16px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
-    width: 240px;
-}
-#como-funciona p{
-    font-size: 16px;
-}
-#como-funciona h3{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-#como-funciona h2{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-}
-
-#como-funciona .comoFuncionaTitulo {
-    font-family: Inter, sans-serif;
-    color: #00b4d8;
-    font-size: 16px; 
-    padding: 10px;
-    font-weight: bold;
-}
-
-/* O texto que fica por baixo do título principal */
-#como-funciona > p {
-    font-size: 16px;
-    color: #111827;
-    line-height: 1.5;
-    margin-bottom: 50px;
-    max-width: 600px;
-}
-
-/* O contentor que segura as 3 caixas */
-#como-funciona .uneCaixas {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    max-width: 1100px; /* Garante que não ficam demasiado esticadas no PC */
-    margin: 0 auto;
-}
-
-/* As caixas individuais */
-#como-funciona .caixa {
+#sobre-nos .split__media {
     flex: 1;
-    background-color: #f0f4ff;
-    padding: 30px 20px;
-    border-radius: 16px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
-    display: block; 
-    min-width: 250px;
+    margin-left: calc(-1 * var(--image-bleed) * (max(100vw - var(--container-width), 0px) / 2 + var(--space-md)));
 }
 
-#como-funciona .caixa h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
+/* Largura fixa do texto para não se mexer quando a imagem cresce */
+#sobre-nos .split__text {
+    flex: 0 0 calc((100% - 72px) * 0.475);
 }
 
-#como-funciona .caixa h3 {
-    color: #0b1b2a;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
 
-/* A solução final para o texto não ficar esmagado */
-#como-funciona .caixa p {
-    color: #111827;
-    font-size: 16px;
-    line-height: 1.8;
-    width: 100%;
-    max-width: 100%;
-    display: block;
-    margin: 0;
-}
+/* =========================================================
+   8. SECÇÃO: BUSSTRACK (PRODUTO)
+   ========================================================= */
+/* (a imagem usa o estilo .split--stretch) */
 
-/* 
-   5. FUNCIONALIDADES (O teu funcionalidade.css original)
-    */
 
-#funcionalidades {
-    font-family: Outfit, sans-serif;
-    background-color: white;
-    padding-bottom: 50px;
-}
-#funcionalidades .titulo {
-    font-family: Outfit, sans-serif;
-    width: 90%;
+/* =========================================================
+   9. SECÇÃO: PLANOS
+   ========================================================= */
+.plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    max-width: 880px;
     margin: 0 auto;
-    text-align: center;
-    margin-top: 50px;
-    color: #34b3e0;
-}
-#funcionalidades .texto {
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 34px;
-    line-height: 1.6;
-    color: rgb(0, 0, 0);
-    margin-bottom: 50px;
-}
-#funcionalidades .localiza, 
-#funcionalidades .mapa, 
-#funcionalidades .percursos,
-#funcionalidades .tempo,
-#funcionalidades .notificacoes,
-#funcionalidades .historico {
-    text-align: left;
-    background-color: #d9e2f085;
-    border-radius: 16px;
-    max-width: 440px;
-    margin: 10px;
-    padding: 40px;
-    border:#0000002c 1px solid;
 }
 
-
-/* 
-   6. PLANOS (O teu planos.css original)
-    */
-#planos {
-    background-color: #0b1b2a;
-    margin-top: 50px;
+.plan {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color:white;
-    padding: 50px 0;
+    padding: var(--space-lg);
+    background-color: var(--color-darker);
+    border-radius: var(--radius-md);
 }
-#planos p{
-    font-size: 18px;
-    color: rgb(170, 166, 166);
-    font-family: 'Inter', sans-serif;
+
+.plan--premium {
+    background-color: var(--color-accent-3);
 }
-#planos h1, #planos h2, #planos h3{
-    font-family: 'Inter', sans-serif;
+
+.plan__name {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
 }
-#planos .planosTitulo{
-    color: #00b4d8;
-    font-family: 'arial', sans-serif;
+
+.plan--premium .plan__name {
+    color: rgb(186, 245, 245);
 }
-#planos .caixa{
-    background-color: #0a131e;
-    padding: 110px;
-    padding-top: 10px;
-    margin-left: 0;
-    text-align: center;
-    border-radius: 16px;
-    box-shadow: #0a131e;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
-    position: relative;
-}
-#planos .caixaDrta{
-    background-color: #00b8d9;
-    padding: 110px;
-    padding-top: 10px;
-    margin-left: 0;
-    text-align: center;
-    border-radius: 16px;
-    box-shadow: white;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
-    position: relative;
-}
-#planos .uneCaixas{
+
+.plan__price {
     display: flex;
-    align-items: stretch;
-    gap: 40px;
-    margin-top: 50px;
-}
-#planos .precoContainer{
-    display: flex !important;
-    justify-content: flex-start !important; /* Força o alinhamento à esquerda */
     align-items: baseline;
     gap: 4px;
-    font-family: 'Inter', sans-serif;
-    margin-bottom: 10px;
-    width: 100% !important; /* Obriga o contentor a esticar tudo */
-    padding-left: 0 !important; 
-    margin-left: 0 !important;
+    margin: var(--space-sm) 0 var(--space-xs);
 }
-#planos .valor{
-    color: #ffffff;
+
+.plan__value {
     font-size: 48px;
-    font-weight: bold;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-white);
 }
-#planos .listaPlanos{
-    text-align: left;
-    justify-content: left;
-    margin-left: -60px;
-    padding-bottom: 20px;
-}
-#planos .listaPlanosDrta{
-    text-align: left;
-    color: white;
-    margin-left: -60px;
-    padding-bottom: 35px;
-}
-#planos .listaPlanos p{
-    color: white;
-    padding-bottom: 20px;
-}
-#planos .listaPlanosDrta p {
-    color: white;
-    padding-bottom: 20px;
-}
-#planos .botaoCaixa{
-    background-color: #1d2c53;
-    padding: 15px 150px;
-    border-radius: 5px;
-    border:none;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
 
+.plan__period {
+    color: var(--color-text-soft);
+}
+
+.plan--premium .plan__period {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.plan__desc {
+    margin-bottom: var(--space-md);
+    font-size: 15px;
+    color: var(--color-text-soft);
+}
+
+.plan--premium .plan__desc {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.plan__features {
+    flex: 1;                       /* empurra o botão para o fundo */
+    margin-bottom: var(--space-md);
+}
+
+.plan__features li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    color: var(--color-white);
+    font-size: 15px;
+}
+
+.plan__features li::before {
+    content: '✓';
     position: absolute;
-    bottom: 35px; /* Distância exata entre o botão e o fundo da caixa */
-    left: 50%; /* Empurra para o meio */
-    transform: translateX(-50%); /* Centra o botão perfeitamente */
-    width: 80%; /* Opcional: Define a largura do botão para não ficar esmagado */
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
 }
-#planos .botaoCaixa:hover{
-    background-color: #0092b3; 
-}
-#planos .botaoCaixaDrta{
-    background-color: white;
-    padding: 15px 150px;
-    border-radius: 5px;
-    border:none;
-    color: #00b8d9;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
 
-    position: absolute;
-    bottom: 35px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    width: 70%; 
+.plan--premium .plan__features li::before {
+    color: var(--color-white);
 }
-#planos .botaoCaixaDrta:hover{
+
+/* Botão dos planos */
+.btn--plan {
+    width: 100%;
+    padding: 15px;
+    border: none;
     background-color: #1d2c53;
+    color: var(--color-white);
+}
+
+.btn--plan:hover {
+    background-color: #0092b3;
+    transform: none;
+}
+
+.plan--premium .btn--plan {
+    background-color: var(--color-white);
+    color: var(--color-accent-3);
+}
+
+.plan--premium .btn--plan:hover {
+    background-color: #1d2c53;
+    color: var(--color-white);
 }
 
 
-/* 
-   7. Tecnologia 
-    */
+/* =========================================================
+   9b. SECÇÃO: CONTACTOS
+   ========================================================= */
+.contact-card {
+    max-width: 670px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--color-white);
+    border: 1px solid #dbe7f7;
+    border-radius: 24px;
+    box-shadow: 0 6px 24px rgba(11, 27, 42, 0.08);
+    text-align: center;
+}
 
+.contact-card__logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--space-sm);
+    border-radius: 16px;
+    background-color: var(--color-dark);
+    color: var(--color-accent-2);
+    font-size: 30px;
+}
 
-#tecnologia .titulo {
-    color: #00b4d8;
-    margin-bottom: 20px;
+.contact-card__name {
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.contact-card__country {
+    margin: 4px 0 var(--space-lg);
+    color: var(--color-text-muted);
+    font-size: 17px;
+}
+
+.tag {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background-color: #e8eef7;
+    color: var(--color-text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: var(--space-lg);
+    text-align: left;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background-color: #eef5ff;
+    border: 1px solid #dbe7f7;
+    border-radius: 12px;
+}
+
+.contact-item__icon {
+    flex-shrink: 0;
+    font-size: 24px;
+    color: var(--color-accent-2);
+}
+
+.contact-item__label {
+    display: block;
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+.contact-item__value {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+a.contact-item__value:hover {
+    color: var(--color-accent-2);
+}
+
+/* Aviso amarelo */
+.notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 18px;
+    background-color: #fffbe6;
+    border: 1px solid #fdeeb0;
+    border-radius: 12px;
+    color: #b45309;
     font-size: 14px;
-
+    text-align: left;
 }
 
-#tecnologia .titulo2 {
-    color: #ffffff;
-    font-family: 'Outfit', sans-serif;
+.notice .icon {
+    flex-shrink: 0;
+    font-size: 18px;
 }
 
-#tecnlogia .texto {
-    color: #ecf2f3;
+
+/* =========================================================
+  10. RODAPÉ
+   ========================================================= */
+.footer {
+    padding: 20px;
+    text-align: center;
+    color: gray;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+  11. RESPONSIVO
+   ========================================================= */
+
+/* Portátil pequeno / tablet */
+@media (max-width: 1000px) {
+    .navbar {
+        padding: 0 var(--space-md);
+    }
+
+    .logo__by {
+        display: none;
+    }
+
+    /* Menu com scroll horizontal quando não cabe */
+    .nav {
+        overflow-x: auto;
+        gap: 16px;
+        margin-left: var(--space-md);
+        scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hero__inner {
+        flex-direction: column;
+        gap: var(--space-xl);
+        text-align: center;
+    }
+
+    .hero__buttons,
+    .hero__features {
+        justify-content: center;
+    }
+
+    .split {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-lg);
+    }
+
+    .split__media,
+    .split__text,
+    #sobre-nos .split__media,
+    #sobre-nos .split__text {
+        width: 100%;
+        flex: none;
+    }
+
+    /* Em ecrãs pequenos a imagem volta a ficar dentro das margens */
+    #sobre-nos .split__media {
+        margin-left: 0;
+    }
+
+
+    /* Em coluna a imagem tem proporção própria (em vez da altura das caixas) */
+    .split--stretch .split__media {
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+    }
+
+    /* Na versão de telemóvel a imagem do produto fica antes das caixas */
+    #bustrack .split__media {
+        order: -1;
+    }
+}
+
+/* Telemóvel */
+@media (max-width: 700px) {
+    :root {
+        --section-y: 56px;
+        --navbar-height: 64px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    /* Barra: logótipo à esquerda, botão do menu à direita */
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .logo__icon { font-size: 28px; }
+    .logo__name { font-size: 20px; }
+
+    .menu-toggle {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 12px 10px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        color: var(--color-white);
+    }
+
+    .menu-toggle:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    .menu-toggle__bar {
+        display: block;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: currentColor;
+        transition: transform 0.25s, opacity 0.2s;
+    }
+
+    /* Três linhas -> X quando o menu está aberto */
+    .menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Menu: painel que cai por baixo da barra */
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin: 0;
+        padding: 8px 20px 16px;
+        overflow: visible;
+        background-color: var(--color-dark);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    }
+
+    .nav.is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .nav a {
+        padding: 14px 4px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 16px;
+    }
+
+    .nav a:last-child {
+        border-bottom: 0;
+    }
+
+    .hero {
+        min-height: 0;
+        padding: 48px 0;
+        background:
+            linear-gradient(180deg,
+                rgba(11, 27, 42, 0.85) 0%,
+                rgba(11, 27, 42, 0.65) 100%),
+            var(--hero-image) center / cover no-repeat,
+            var(--color-dark);
+    }
+
+    .hero__inner {
+        gap: 48px;
+    }
+
+    .hero__content > p {
+        font-size: 16px;
+    }
+
+    /* Botões ocupam a largura toda e ficam empilhados */
+    .hero__buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero__features {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .phone {
+        width: 260px;
+        height: 500px;
+        border-width: 6px;
+        border-radius: 34px;
+        box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .section-header {
+        margin-bottom: var(--space-lg);
+    }
+
+    .section-lead,
+    .lead {
+        font-size: 16px;
+    }
+
+    .grid--2 {
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .card--outline,
+    .card--panel {
+        padding: 22px;
+    }
+
+    .plans {
+        gap: var(--space-md);
+    }
+
+    .plan {
+        padding: 28px 22px;
+    }
+
+    .plan__value {
+        font-size: 40px;
+    }
+
+    .contact-card {
+        padding: 28px 20px;
+    }
+
+    /* Pontos laterais mais pequenos e junto à borda */
+    .dots {
+        right: 5px;
+        gap: 12px;
+    }
+
+    .dots__dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .dots__dot::before {
+        display: none;
+    }
 }
