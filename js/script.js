@@ -142,12 +142,10 @@
 (function () {
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Quem pediu menos movimento: sem animações (nem o autocarro no mapa)
+    // Quem pediu menos movimento: sem efeitos de entrada.
+    // O autocarro no mapa continua a andar, porque é o que mostra o produto.
     if (reduceMotion || !('IntersectionObserver' in window)) {
         document.documentElement.classList.remove('js');
-        Array.prototype.forEach.call(document.querySelectorAll('svg'), function (svg) {
-            if (svg.pauseAnimations) svg.pauseAnimations();
-        });
         return;
     }
 

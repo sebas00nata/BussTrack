@@ -9,19 +9,22 @@
     <meta name="theme-color" content="#0b1b2a">
 
     <!-- Ícones do separador / ecrã inicial -->
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" href="imagens/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="imagens/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="imagens/apple-touch-icon.png">
 
     <!-- Pré-visualização ao partilhar o link (WhatsApp, Facebook, LinkedIn...).
-         Depois de publicares o site, troca "og-image.jpg" e "og:url" pelo endereço completo,
-         por exemplo https://sebas00nata.github.io/BussTrack/og-image.jpg -->
+         O endereço tem de ser completo. Se mudares o site de endereço, atualiza estas linhas. -->
+    <link rel="canonical" href="https://sebas00nata.github.io/BussTrack/">
+    <meta property="og:url" content="https://sebas00nata.github.io/BussTrack/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_PT">
     <meta property="og:site_name" content="BussTrack">
     <meta property="og:title" content="BussTrack - PrimeTrack">
     <meta property="og:description" content="Acompanha a localização dos autocarros em tempo real e planeia melhor as tuas deslocações.">
-    <meta property="og:image" content="og-image.jpg">
+    <meta property="og:image" content="https://sebas00nata.github.io/BussTrack/imagens/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,10 +127,10 @@
 
                     <div class="phone__map">
                         <svg class="phone__svg" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-                            <!-- Ruas do mapa -->
+                            <!-- Grelha do mapa -->
                             <g class="phone__streets">
-                                <path d="M0 90H300"/><path d="M0 200H300"/><path d="M0 310H300"/>
-                                <path d="M70 0V400"/><path d="M180 0V400"/><path d="M260 0V400"/>
+                                <path d="M0 40H300"/><path d="M0 100H300"/><path d="M0 160H300"/><path d="M0 220H300"/><path d="M0 280H300"/><path d="M0 340H300"/><path d="M0 400H300"/>
+                                <path d="M20 0V400"/><path d="M80 0V400"/><path d="M140 0V400"/><path d="M200 0V400"/><path d="M260 0V400"/>
                             </g>
 
                             <!-- Percurso e paragens -->
@@ -136,16 +139,23 @@
                             <circle class="phone__stop" cx="215" cy="95" r="6"/>
                             <circle class="phone__stop phone__stop--end" cx="255" cy="30" r="8"/>
 
+                            <!-- Nome da paragem final -->
+                            <g class="phone__label">
+                                <rect x="205" y="46" width="80" height="22" rx="11"/>
+                                <text x="245" y="61" text-anchor="middle">Samora City</text>
+                            </g>
+
                             <!-- Autocarro: anda ao longo do percurso -->
                             <g class="phone__bus">
                                 <animateMotion dur="14s" repeatCount="indefinite" rotate="0">
                                     <mpath href="#bus-route"/>
                                 </animateMotion>
-                                <circle class="phone__pulse" r="14">
-                                    <animate attributeName="r" values="14;30" dur="1.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.5;0" dur="1.8s" repeatCount="indefinite"/>
+                                <circle class="phone__halo" r="23"/>
+                                <circle class="phone__pulse" r="16">
+                                    <animate attributeName="r" values="16;34" dur="1.8s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.45;0" dur="1.8s" repeatCount="indefinite"/>
                                 </circle>
-                                <circle class="phone__bus-dot" r="15"/>
+                                <circle class="phone__bus-dot" r="13"/>
                                 <use class="phone__bus-icon" href="#i-bus" x="-9" y="-9" width="18" height="18"/>
                             </g>
                         </svg>
@@ -153,9 +163,10 @@
 
                     <div class="phone__info">
                         <div class="phone__info-top">
-                            <strong>Linha 15 - Centro</strong>
+                            <strong>Linha 15 - Samora City</strong>
                             <span class="badge-live">AO VIVO</span>
                         </div>
+                        <div class="phone__progress"><span></span></div>
                         <p>Próxima paragem em <b>2 min</b></p>
                     </div>
                 </div>
@@ -171,7 +182,7 @@
             <div class="container split split--stretch">
 
                 <div class="split__media">
-                    <img src="imgSobreNos.webp" width="1656" height="974" loading="lazy" decoding="async" alt="Equipa da PrimeTrack Technologies a trabalhar" class="rounded-img">
+                    <img src="imagens/imgSobreNos.webp" width="1656" height="974" loading="lazy" decoding="async" alt="Equipa da PrimeTrack Technologies a trabalhar" class="rounded-img">
                 </div>
 
                 <div class="split__text">
@@ -194,6 +205,8 @@
                             <p>Construir um futuro onde a tecnologia ajuda as pessoas a tomar melhores decisões no seu dia a dia.</p>
                         </article>
                     </div>
+
+                    <a class="btn btn--primary mt-lg" href="https://sebas00nata.github.io/primetrack-corporate-website/" target="_blank" rel="noopener">Visitar o site da PrimeTrack →</a>
                 </div>
 
             </div>
@@ -240,7 +253,7 @@
                     </div>
 
                     <div class="split__media">
-                        <img src="imgNossoProduto.webp" width="828" height="487" loading="lazy" decoding="async" alt="Aplicação BussTrack com mapa de autocarros em tempo real" class="rounded-img">
+                        <img src="imagens/imgNossoProduto.webp" width="828" height="487" loading="lazy" decoding="async" alt="Aplicação BussTrack com mapa de autocarros em tempo real" class="rounded-img">
                     </div>
 
                 </div>

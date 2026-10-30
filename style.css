@@ -664,6 +664,7 @@ section[id] {
 @media (prefers-reduced-motion: reduce) {
     .reveal.is-visible { animation: none; }
     .phone__route { animation: none; }
+    .phone__progress span { animation: none; width: 60%; }
 
     .card,
     .plan { transition: none; }
@@ -675,7 +676,7 @@ section[id] {
    ========================================================= */
 .hero {
     /* Foto de fundo (troca por outra mudando só esta linha) */
-    --hero-image: url('imgSobreNos.webp');
+    --hero-image: url('imagens/imgSobreNos.webp');
 
     position: relative;
     isolation: isolate;
@@ -759,10 +760,10 @@ section[id] {
     width: 320px;
     height: 600px;
     overflow: hidden;
-    background-color: #111827;
-    border: 8px solid #1f2937;
-    border-radius: 40px;
-    box-shadow: 0 0 20px 50px rgba(0, 0, 0, 0.4);
+    background-color: #151a2c;
+    border: 8px solid #1b2536;
+    border-radius: 44px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .phone__notch {
@@ -771,9 +772,9 @@ section[id] {
     left: 50%;
     z-index: 10;
     width: 110px;
-    height: 25px;
-    background-color: #1f2937;
-    border-radius: 0 0 18px 18px;
+    height: 28px;
+    background-color: #1b2536;
+    border-radius: 0 0 20px 20px;
     transform: translateX(-50%);
 }
 
@@ -781,9 +782,9 @@ section[id] {
     position: relative;
     flex-shrink: 0;
     width: 100%;
-    height: 70%;
+    height: 66%;
     overflow: hidden;
-    background-color: #334155;
+    background-color: #35465c;
 }
 
 /* Mapa animado (SVG): ruas, percurso tracejado, paragens e autocarro */
@@ -796,8 +797,24 @@ section[id] {
 
 .phone__streets path {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.07);
-    stroke-width: 6;
+    stroke: rgba(255, 255, 255, 0.09);
+    stroke-width: 1.2;
+}
+
+.phone__label rect {
+    fill: #0f1c2b;
+    stroke: rgba(255, 255, 255, 0.12);
+}
+
+.phone__label text {
+    fill: var(--color-white);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.phone__halo {
+    fill: var(--color-accent);
+    opacity: 0.3;
 }
 
 .phone__route {
@@ -832,7 +849,7 @@ section[id] {
 .phone__bus-dot {
     fill: var(--color-accent);
     stroke: var(--color-white);
-    stroke-width: 3;
+    stroke-width: 4;
 }
 
 .phone__bus-icon {
@@ -850,9 +867,10 @@ section[id] {
     z-index: 20;
     width: calc(100% - 32px);
     padding: 16px 18px;
-    background-color: #122232;
+    background-color: #162b3f;
     color: var(--color-white);
-    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
     box-shadow: var(--shadow-strong);
     text-align: center;
 }
@@ -861,7 +879,28 @@ section[id] {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
+}
+
+.phone__progress {
+    height: 5px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.phone__progress span {
+    display: block;
+    height: 100%;
+    background-color: var(--color-accent);
+    border-radius: 3px;
+    animation: phone-progress 14s linear infinite;
+}
+
+@keyframes phone-progress {
+    from { width: 4%; }
+    to   { width: 100%; }
 }
 
 .phone__info strong {
@@ -1337,11 +1376,16 @@ a.contact-item__value:hover {
         gap: 8px;
     }
 
+    .phone__info { padding: 14px; }
+    .phone__info-top { gap: 8px; }
+    .phone__info strong { font-size: 12px; white-space: nowrap; }
+    .badge-live { white-space: nowrap; }
+
     .phone {
         width: 260px;
         height: 500px;
         border-width: 6px;
-        border-radius: 34px;
+        border-radius: 36px;
         box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.4);
     }
 
